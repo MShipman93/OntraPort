@@ -12,6 +12,11 @@ Install ontraport npm package
 npm install ontraport
 ```
 
+or clone from GitHub
+```
+git clone https://github.com/MShipman93/OntraPort.git
+```
+
 ### Use inside Node
 First thing first is requiring the package.
 ```
