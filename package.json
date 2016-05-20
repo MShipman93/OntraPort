@@ -1,0 +1,14 @@
+{
+  "name": "ontraport",
+  "version": "1.0.4",
+  "description": "An API wrapper for OntraPort API.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "ontraport"
+  ],
+  "author": "Matthew Shipman <matt.shipman1993@gmail.com> (http://mshipman93.github.io)",
+  "license": "ISC"
+}
