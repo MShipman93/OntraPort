@@ -1,9 +1,9 @@
 # OntraPort
----
+
 This is a package is an API wrapper for OntraPort to make implementing OntraPort into Node much easier. This package is not made offically by OntraPort so any issues with their API is to be communicated with them directly.
 
 ## Getting Started
----
+
 To get started you must install the package from npm
 
 ### Installation
@@ -51,5 +51,5 @@ ontraPortController.addJsonTag('12345', 'Admin', function(err, res) {
 ```
 
 ## Notes
----
+
 This package does not have a JSON equivalent for all functions. There is comments above all functions explaining params and giving examples.
