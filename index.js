@@ -76,7 +76,20 @@ var sendAPIRequest = function(config, reqType, data, callback) {
         });
 
         res.on('end', function() {
-            return callback(undefined, responseString);
+     		// Check statusCode to check for errors
+            if(res.statusCode >= 400) {
+                return callback({
+                    statusCode:res.statusCode,
+                    message:res.statusMessage,
+                    response:responseString
+                }, undefined);
+            }
+            else {
+                return callback(undefined, {
+                    statusCode:res.statusCode,
+                    response:responseString
+                });
+            }
         });
     });
 
