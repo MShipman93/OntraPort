@@ -94,7 +94,7 @@ var sendAPIRequest = function(config, reqType, data, callback) {
 
                 if(result && result.firstChild.nodeValue && result.firstChild.nodeValue == 'failure') {
                     response.statusCode = 400;
-                    reponse.message = 'Bad Request';
+                    response.message = 'Bad Request';
 
                     return callback(response, undefined);
                 }
