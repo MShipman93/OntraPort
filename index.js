@@ -6,6 +6,8 @@
  * anything outside this package doesn't work correctly.
  */
 var https = require('https');
+var DOMParser = require('xmldom').DOMParser;
+var parser = new DOMParser();
 
 /**
  * Callback used for most API calls
@@ -76,19 +78,28 @@ var sendAPIRequest = function(config, reqType, data, callback) {
         });
 
         res.on('end', function() {
-     		// Check statusCode to check for errors
+
+            var response = {
+                statusCode:res.statusCode,
+                message:res.statusMessage,
+                response:responseString
+            };
+
             if(res.statusCode >= 400) {
-                return callback({
-                    statusCode:res.statusCode,
-                    message:res.statusMessage,
-                    response:responseString
-                }, undefined);
+                return callback(response, undefined);
             }
             else {
-                return callback(undefined, {
-                    statusCode:res.statusCode,
-                    response:responseString
-                });
+                var xmlDoc = parser.parseFromString(responseString, "text/xml");
+                var result = xmlDoc.getElementsByTagName("result")[0];
+
+                if(result && result.firstChild.nodeValue && result.firstChild.nodeValue == 'failure') {
+                    response.statusCode = 400;
+                    reponse.message = 'Bad Request';
+
+                    return callback(response, undefined);
+                }
+
+                return callback(undefined, response);
             }
         });
     });
