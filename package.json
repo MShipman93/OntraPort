@@ -9,6 +9,9 @@
   "keywords": [
     "ontraport"
   ],
+  "dependencies": {
+    "xmldom":"0.1.22"
+  },
   "author": "Matthew Shipman <matt.shipman1993@gmail.com> (http://mshipman93.github.io)",
   "license": "ISC"
 }
