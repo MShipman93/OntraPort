@@ -1,6 +1,6 @@
 {
   "name": "ontraport",
-  "version": "1.0.5",
+  "version": "1.1.0",
   "description": "An API wrapper for OntraPort API.",
   "main": "index.js",
   "scripts": {
