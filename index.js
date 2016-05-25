@@ -50,7 +50,7 @@ var sendAPIRequest = function(config, reqType, data, callback) {
         "appid=" + config.appid +
         "&key=" + config.key +
         "&reqType=" + reqType +
-        "&data=" + encodeURIComponent(data);
+        "&data=" + encodeURIComponent(encodeURIComponent(data));
 
     // Options for https request
     var options = {
