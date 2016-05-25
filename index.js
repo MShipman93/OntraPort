@@ -92,7 +92,7 @@ var sendAPIRequest = function(config, reqType, data, callback) {
                 var xmlDoc = parser.parseFromString(responseString, "text/xml");
                 var result = xmlDoc.getElementsByTagName("result")[0];
 
-                if(result && result.firstChild.nodeValue && result.firstChild.nodeValue == 'failure') {
+                if(result && result.firstChild && result.firstChild.nodeValue && result.firstChild.nodeValue == 'failure') {
                     response.statusCode = 400;
                     response.message = 'Bad Request';
 
