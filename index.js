@@ -89,17 +89,31 @@ var sendAPIRequest = function(config, reqType, data, callback) {
                 return callback(response, undefined);
             }
             else {
+                var results;
                 var xmlDoc = parser.parseFromString(responseString, "text/xml");
-                var result = xmlDoc.getElementsByTagName("result")[0];
 
-                if(result && result.firstChild && result.firstChild.nodeValue && result.firstChild.nodeValue == 'failure') {
-                    response.statusCode = 400;
-                    response.message = 'Bad Request';
+                if(xmlDoc != undefined && typeof xmlDoc.getElementsByTagName === 'function')
+                    results = xmlDoc.getElementsByTagName("result");
+
+                if(results && results.length > 0) {
+                    var result = results[0];
+
+                    if(result && result.firstChild && result.firstChild.nodeValue && result.firstChild.nodeValue == 'failure') {
+                        response.statusCode = 400;
+                        response.message = 'Bad Request';
+
+                        return callback(response, undefined);
+                    }
+
+                    return callback(undefined, response);
+                }
+                else {
+                    response.statusCode = 500;
+                    response.message = 'Internal Error';
 
                     return callback(response, undefined);
                 }
 
-                return callback(undefined, response);
             }
         });
     });
