@@ -54,7 +54,7 @@ var sendAPIRequest = function(config, reqType, data, callback) {
 
     // Options for https request
     var options = {
-        host: 'api.moon-ray.com',
+        host: 'api.ontraport.com',
         path: '/cdata.php',
         method: 'POST',
         headers: {
